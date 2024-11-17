@@ -2,8 +2,10 @@
 
 import { useState, useEffect } from 'react'
 import { Trash2, ChevronLeft, ChevronRight } from 'lucide-react'
+import LoginForm from '@/components/login-form'
 
 export default function AdminPanel() {
+    const [isAuthenticated, setIsAuthenticated] = useState(false)
     const [title, setTitle] = useState('')
     const [tags, setTags] = useState('')
     const [colors, setColors] = useState('')
@@ -21,20 +23,39 @@ export default function AdminPanel() {
     const [totalPages, setTotalPages] = useState(1)
 
     useEffect(() => {
-        fetchSchemes(currentPage)
-    }, [isEmbroidery, currentPage])
+        if (isAuthenticated) {
+            fetchSchemes(currentPage)
+        }
+    }, [isAuthenticated, isEmbroidery, currentPage])
 
-    useEffect(() => {
-        setSchemes([])
-        setCurrentPage(1)
-        fetchSchemes(1)
-    }, [isEmbroidery])
+    const handleLogin = async (username, password) => {
+        try {
+            const response = await fetch('/api/auth/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, password }),
+            })
+            if (response.ok) {
+                const data = await response.json()
+                localStorage.setItem('token', data.token)
+                setIsAuthenticated(true)
+            } else {
+                setError('Invalid credentials')
+            }
+        } catch (err) {
+            setError('Error logging in: ' + err.message)
+        }
+    }
 
     const fetchSchemes = async (page) => {
         setIsLoading(true)
         try {
             const endpoint = isEmbroidery ? `/api/embroidery-schemas?page=${page}` : `/api/crochet-schemes?page=${page}`
-            const response = await fetch(endpoint)
+            const response = await fetch(endpoint, {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                }
+            })
             if (!response.ok) {
                 throw new Error('Failed to fetch schemes')
             }
@@ -81,6 +102,9 @@ export default function AdminPanel() {
             const response = await fetch(endpoint, {
                 method: 'POST',
                 body: formData,
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                }
             })
 
             const result = await response.json()
@@ -101,6 +125,9 @@ export default function AdminPanel() {
             const endpoint = isEmbroidery ? `/api/embroidery-schemas/${id}` : `/api/crochet-schemes/${id}`
             const response = await fetch(endpoint, {
                 method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                }
             })
             if (!response.ok) {
                 throw new Error('Failed to delete scheme')
@@ -140,6 +167,10 @@ export default function AdminPanel() {
             acc[`step${index + 1}`] = line.trim()
             return acc
         }, {})
+    }
+
+    if (!isAuthenticated) {
+        return <LoginForm onLogin={handleLogin} error={error} />
     }
 
     return (

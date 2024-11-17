@@ -4,15 +4,37 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d29b6b5a-6ec5-4745-9380-4dd0cb6c8986" name="Changes" comment="fixed --&gt; missed http method">
+    <list default="true" id="d29b6b5a-6ec5-4745-9380-4dd0cb6c8986" name="Changes" comment="changed --&gt; admin panel now require password and filter was added">
+      <change afterPath="$PROJECT_DIR$/src/app/api/auth/login/route.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/api/auth/register/route.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/login-form.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/jwt.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/middleware/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scheme.sql" beforeDir="false" afterPath="$PROJECT_DIR$/scheme.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/admin/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/admin/page.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/api/crochet-schemes/[id]/route.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/crochet-schemes/[id]/route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/api/crochet-schemes/route.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/crochet-schemes/route.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/api/embroidery-schemas/[id]/route.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/embroidery-schemas/[id]/route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/api/embroidery-schemas/route.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/embroidery-schemas/route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/crochet/[id]/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/crochet/[id]/page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/crochet/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/crochet/page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/embroidery/[id]/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/embroidery/[id]/page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/embroidery/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/embroidery/page.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -25,21 +47,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;npm.build.executor&quot;: &quot;Run&quot;,
-    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;D:\\WebStorm 2024.1.2\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "D:/crochet/src/app/api/auth/login",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.build.executor": "Run",
+    "npm.dev.executor": "Run",
+    "ts.external.directory.path": "D:\\WebStorm 2024.1.2\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\crochet\src\app\api\auth\login" />
+      <recent name="D:\crochet\src\app\api" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\crochet\src\app\api\auth\register" />
+      <recent name="D:\crochet\src" />
+    </key>
+  </component>
   <component name="RunManager" selected="npm.dev">
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
@@ -85,6 +118,7 @@
       <updated>1731444776026</updated>
       <workItem from="1731444777257" duration="7207000" />
       <workItem from="1731531334906" duration="5226000" />
+      <workItem from="1731664928134" duration="8889000" />
     </task>
     <task id="LOCAL-00001" summary="fixed --&gt; everything">
       <option name="closed" value="true" />
@@ -156,6 +190,7 @@
     <MESSAGE value="fixed --&gt; images path in hosting" />
     <MESSAGE value="changed --&gt; images saves in blob not in the file system" />
     <MESSAGE value="fixed --&gt; missed http method" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed --&gt; missed http method" />
+    <MESSAGE value="changed --&gt; admin panel now require password and filter was added" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed --&gt; admin panel now require password and filter was added" />
   </component>
 </project>
